@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+}
+
+.manage-benefits-container { /* Updated class name for clarity */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    min-height: 100vh; /* Minimum height to cover full viewport */
+    padding: 20px; /* Padding around the content */
+}
+
+.compliance-report-container {
+    max-width: 900px;
+    width: 100%; /* Make it responsive */
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.tabs {
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox for tabs */
+}
+
+.tabs button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.tabs button.active {
+    background-color: #03a426; /* Active tab background */
+    color: white; /* Text color for active tab */
+}
+
+.edit-btn, .delete-btn {
+    margin-left: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #007bff; /* Color for icons */
+    transition: color 0.3s;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: #0056b3; /* Darker color on hover */
+}
+
+/* Optional: Style for icons */
+.edit-btn i, .delete-btn i {
+    font-size: 1.2rem; /* Adjust icon size */
+}
+
+.benefit-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px;
+}
+
+.benefit-table th, .benefit-table td {
+    padding: 12px 15px; /* Padding for table cells */
+    text-align: left; /* Align text to the left */
+}
+
+.benefit-table th {
+    background-color: #f5f5f5; /* Light background for header */
+    font-weight: bold; /* Bold font for header */
+}
+
+/* Remove visible lines for the benefits list */
+.benefit-table tr {
+    border-bottom: none; /* No bottom border */
+}
+
+/* Remove borders from table */
+.benefit-table, .benefit-table th, .benefit-table td {
+    border: none; /* No borders */
+}
+
+/* Style the list items to look like a table without lines */
+.benefit-list-item {
+    padding: 10px; /* Padding for each item */
+    display: flex; /* Flex for layout */
+    justify-content: space-between; /* Space between items */
+    background: #f9f9f9; /* Light background for each item */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 5px; /* Space between items */
+}
+
+/* Responsive styling for the benefits table */
+@media (max-width: 600px) {
+    .benefit-table {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+
+    .tabs button {
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+    }
+}

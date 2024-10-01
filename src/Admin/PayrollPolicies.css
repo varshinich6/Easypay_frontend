@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+}
+
+.payroll-policy-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+form input[type='text'],
+form input[type='date'],
+form input[type='number'] {
+    width: calc(33% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0a74da;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #095bb5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+thead {
+    background-color: #f0f0f0;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin: 0 5px;
+}
+
+.edit-btn {
+    color: #28a745;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+.tab-navigation {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab-navigation button {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tab-navigation button.active {
+    background-color: #0a74da;
+    color: white;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 10px;
+}

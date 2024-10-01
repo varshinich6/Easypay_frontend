@@ -1,0 +1,108 @@
+/* Container for the entire component */
+/* .page-container {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: 100vh; /* Full height of the viewport */
+
+
+/* Center the leave container */
+.leave-container {
+    max-width: 1000px;
+    margin:  auto;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 700px; /* Optional: Set a fixed width for the container */
+}
+
+/* Tab navigation styling */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-navigation button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.tab-navigation button.active {
+    background-color: #4caf50; /* Highlight active tab */
+    color: white;
+    border: 1px solid #4caf50;
+}
+
+.tab-navigation button:hover:not(.active) {
+    background-color: #e0e0e0;
+}
+
+/* Center the forms inside the leave container */
+.leave-form,
+.status-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.leave-form .form-group,
+.status-form .form-group {
+    margin-bottom: 15px;
+}
+
+/* Input field styling */
+.leave-form input,
+.status-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button styling */
+.leave-form button,
+.status-form button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.leave-form button:hover,
+.status-form button:hover {
+    background-color: #45a049;
+}
+
+/* Leave status message styling */
+.status-message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Styling for leave status display */
+/* Styling for leave status display in grid format */
+.leave-status {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.leave-status div {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-weight: bold;
+}

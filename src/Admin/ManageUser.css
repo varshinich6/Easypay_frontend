@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+}
+
+.manage-user-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tabs button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Form Styling */
+.user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-form input[type='text'],
+.user-form input[type='email'] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.user-form button {
+    padding: 10px 15px;
+    background-color: #17a2b8;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-form button:hover {
+    background-color: #138496;
+}
+
+/* User List Table Styling */
+.user-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-list th,
+.user-list td {
+    padding: 12px 20px;
+    text-align: left;
+}
+
+.user-list th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.user-list td {
+    border-bottom: 1px solid #ddd;
+}
+
+.user-list tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for Icons */
+.icon-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.form-group input {
+    flex: 1 0 10%; /* Allow inputs to take 30% of the row, enabling three per row */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.icon-btn.edit-btn {
+    color: #007bff;
+}
+
+.icon-btn.delete-btn {
+    color: #dc3545;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}
+
+.error-message {
+    color: red;
+}
