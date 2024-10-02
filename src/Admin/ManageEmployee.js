@@ -148,7 +148,7 @@ const ManageEmployee = () => {
                 <div>
                     <h2>Employee List</h2>
                     <div className="employee-grid">
-                        <div className="grid-header">EmployeeId</div>
+                    <div className="grid-header">EmployeeId</div>
                         <div className="grid-header">Employee Name</div>
                         <div className="grid-header">Designation</div>
                         <div className="grid-header">Email</div>
@@ -161,7 +161,7 @@ const ManageEmployee = () => {
 
                         {employeeList.map((emp) => (
                             <React.Fragment key={emp.employeeId}>
-                                <div className="grid-cell">{emp.employeeId}</div> 
+                                <div className="grid-cell">{emp.employeeId}</div>
                                 <div className="grid-cell">{emp.employeeName}</div>
                                 <div className="grid-cell">{emp.designation}</div>
                                 <div className="grid-cell">{emp.email}</div>

@@ -60,7 +60,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(120deg, #f093fb, #f5576c)',
+    background: 'navy',
     color: '#fff',
   },
   loginBox: {

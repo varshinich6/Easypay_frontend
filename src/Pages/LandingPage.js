@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from './Login';
 
+
 const LandingPage = () => {
   const [showLogin, setShowLogin] = useState(false);
 
@@ -31,7 +32,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, #667eea, #764ba2)',
+    background: 'linear-gradient(to bottom,navy,indigo)',
     color: '#fff',
   },
   landingPage: {

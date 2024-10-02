@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {jwtDecode} from 'jwt-decode'; // Correct the import statement
+import {jwtDecode} from 'jwt-decode'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';  
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +30,46 @@ const Login = () => {
       console.log('User Role:', UserRole);
 
       // Correct the role checks based on the value from decode
-      if (UserRole === 'Admin') navigate('/admin');
-      else if (UserRole === 'Employee') navigate('/employee');
-      else if (UserRole === 'PayrollProcessor') navigate('/processor'); // Change from 'PayrollProcessor' to 'Processor'
-      else if (UserRole === 'Manager') navigate('/manager');
+      if (UserRole === 'Admin')
+      {
+        toast.success("Logging into Admin Dashboard", {
+          position: "top-center",
+          autoClose: 3000, 
+          onClose: () => {
+            navigate("/admin");  
+          }
+        });
+      }
+      else if (UserRole === 'Employee')
+        {
+          toast.success("Logging into Employee Dashboard", {
+            position: "top-center",
+            autoClose: 3000, 
+            onClose: () => {
+              navigate("/employee");  
+            }
+          });
+        } 
+      else if (UserRole === 'PayrollProcessor') 
+        {
+          toast.success("Logging into Payroll-Processor Dashboard", {
+            position: "top-center",
+            autoClose: 3000, 
+            onClose: () => {
+              navigate("/processor");  
+            }
+          });
+        }
+      else if (UserRole === 'Manager') 
+      {
+        toast.success("Logging into Manager Dashboard", {
+          position: "top-center",
+          autoClose: 3000, 
+          onClose: () => {
+            navigate("/manager");  
+          }
+        });
+      }
       else setError('Invalid role or unauthorized access');
 
     } catch (err) {
@@ -40,7 +79,8 @@ const Login = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.loginBox}>
+      <ToastContainer />
+      <div style={styles.logincontainer}>
         <h2 style={styles.title}>Login</h2>
         <form onSubmit={handleLogin} style={styles.form}>
           <div style={styles.formGroup}>
@@ -86,10 +126,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(120deg, #f093fb, #f5576c)',
-    color: '#fff',
+    background: 'linear-gradient(90deg, navy)',
+    //color: '#fff',
   },
-  loginBox: {
+  logincontainer: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: '40px',
     borderRadius: '15px',

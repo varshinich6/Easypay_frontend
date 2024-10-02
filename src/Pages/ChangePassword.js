@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';  // Import toastify CSS
+import { PiX } from 'react-icons/pi';
+
 
 const ChangePassword = () => {
   const [password, setPassword] = useState('');
@@ -85,7 +87,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(120deg, #f093fb, #f5576c)',
+    background: 'navy',
     color: '#fff',
   },
   loginBox: {
@@ -116,6 +118,7 @@ const styles = {
     marginBottom: '5px',
     fontSize: '1rem',
     color: '#fff',
+    padding: '10px',
   },
   input: {
     padding: '10px',

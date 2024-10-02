@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Processor.css"; // Custom styles for the Processor component
+import "../Admin/Admin.css"; 
 import CalculatePayroll from "./CalculatePayroll";
 import ManageBenefits from "./ManageBenefits";
 import Home from "../Employee/Home";
 import Profile from "../Employee/Profile"
 import ViewPaystubs from "../Employee/ViewPaystubs";
 import RequestLeave from "../Employee/RequestLeave";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserShield } from '@fortawesome/free-solid-svg-icons'; // Choose an appropriate icon
 
 
 function Processor() {
@@ -44,23 +45,42 @@ function Processor() {
 
   return (
     <>
-      {/* Header with title and logout button */}
-      <div className="head"style={{color:"white"}}>
+      <input type="checkbox" id="openslidebar" />
+      <div className="head-admin" style={{ color: "white" }}>
         <div>
-          <h1>Payroll Management</h1>
+          <h2>
+            <FontAwesomeIcon icon={faUserShield} style={{ marginRight: '8px' }} />
+            Payroll-Processor Dashboard
+          </h2>
         </div>
-        <div className="gap"></div>
-        <div className="child2">
-          <button className="btn" onClick={handleLogout}>Logout</button>
+      <div className="flexdcol">
+        <div className="child2-admin">
+            <button className="btn-admin" onClick={handleLogout}>Logout</button>
         </div>
+        <label id="opensidebar" for="openslidebar">
+          <div className="opensidebar">
+            <div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </label>
+        <label id="closesidebar" for="openslidebar">
+          <div className="closesidebar">
+            <div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </label>
       </div>
-
-      {/* Main App Container */}
-      <div className="app">
-        {/* Sidebar Navigation */}
-        <div className="sidebar">
-          <ul>
-            <li onClick={() => setActiveComponent("home")}>Home</li>
+    </div>
+   
+    <div className="app-admin">
+      {/* Sidebar Navbar */}
+      <div className="sidebar-admin">
+        <ul>            <li onClick={() => setActiveComponent("home")}>Home</li>
             <li onClick={() => setActiveComponent("Profile")}>Profile</li>
             <li onClick={() => setActiveComponent("calculate")}>Manage Payroll</li>
             <li onClick={() => setActiveComponent("manage")}>Manage Benefits</li>

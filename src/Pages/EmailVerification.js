@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
+
 const EmailVerification = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -59,7 +60,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(120deg, #f093fb, #f5576c)',
+    background: 'navy',
     color: '#fff',
   },
   loginBox: {

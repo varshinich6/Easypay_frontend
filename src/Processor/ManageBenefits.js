@@ -8,8 +8,9 @@ const ManageBenefits = () => {
     const [error, setError] = useState('');
     const [benefit, setBenefit] = useState({
         benefitName: '',
-        employeeId: '',
+        employeeName: '',
         amount: '',
+        employeeId:'',
     });
     const [activeTab, setActiveTab] = useState('add');
 
@@ -25,6 +26,7 @@ const ManageBenefits = () => {
                 },
             });
             setBenefits(response.data);
+            console.log(response.data);
         } catch (err) {
             setError('Failed to fetch benefits');
             console.error('Error fetching benefits:', err);
@@ -131,21 +133,23 @@ const ManageBenefits = () => {
                 <thead>
                     <tr>
                         <th>Benefit Name</th>
+                        <th>EmployeeID</th>
+                        <th>Employee Name</th>
                         <th>Amount</th>
-                        <th>Employee ID</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {benefits.map((benefit) => (
                         <tr key={benefit.benefitId}>
                             <td>{benefit.benefitName}</td>
-                            <td>{benefit.amount}</td>
                             <td>{benefit.employeeId}</td>
+                            <td>{benefit.employeeName}</td>
+                            <td>{benefit.amount}</td>
+                           
+                           
                             <td>
-                                <button className="edit-btn" onClick={() => handleEdit(benefit)}>
-                                    <i className="fas fa-pencil-alt"></i> {/* Brush icon */}
-                                </button>
+                                
                                 <button className="delete-btn" onClick={() => handleDelete(benefit.benefitId)}>
                                     <i className="fas fa-trash-alt"></i> {/* Dustbin icon */}
                                 </button>
