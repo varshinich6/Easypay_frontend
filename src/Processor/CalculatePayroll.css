@@ -1,13 +1,13 @@
-/* Container styling */
+
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns for row-wise layout */
+    grid-template-columns: repeat(3, 1fr); 
     grid-gap: 20px;
     padding: 20px;
     margin-left:25%
   }
   
-  /* Styling for each grid item */
+  
   .grid-item {
     padding: 15px;
     border: 1px solid #ddd;
@@ -15,7 +15,7 @@
     background-color: #f9f9f9;
   }
   
-  /* Form and input styling */
+  
   .form-section form {
     display: flex;
     flex-direction: column;
@@ -44,19 +44,19 @@
     border-radius: 5px;
   }
   
-  /* Primary button styles */
+  
   .btn-primary {
     background-color: #007bff;
     color: white;
   }
   
-  /* Disabled button styles */
+  
   .btn-disabled {
     background-color: #ccc;
     color: #666;
   }
   
-  /* Section titles */
+  
   .action-section h2, .form-section h2 {
     margin-bottom: 10px;
   }

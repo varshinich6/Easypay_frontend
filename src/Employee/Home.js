@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './HomePage.css'; // Use the updated CSS file for styling
+import './Home.css'; // Use the updated CSS file for styling
 
-const HomePage = () => {
+const Home = () => {
     return (
         <div className="fullPageContainer">
             {/* Full Page Animated Background */}
@@ -20,14 +20,14 @@ const HomePage = () => {
                     >
                         Welcome to Payroll Management System
                     </motion.h1>
-                    <motion.p
+                    <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
                         className="heroSubtitle"
                     >
-                        Manage Employee Salaries with Ease and Precision
-                    </motion.p>
+                        <strong>Manage Employee Salaries with Ease and Precision</strong>
+                    </motion.h3>
                 </header>
 
                 {/* Cards Section */}
@@ -38,8 +38,9 @@ const HomePage = () => {
                         whileTap={{ scale: 0.95 }}
                     >
                         <h3>📊 Real-time Payroll Processing</h3>
-                        <p>
-                            Calculate salaries, manage deductions, and generate payslips seamlessly.
+                        <hr></hr>
+                        <p className='front-color'>
+                          Calculate salaries, manage deductions, and generate payslips seamlessly.
                         </p>
                     </motion.div>
 
@@ -49,8 +50,9 @@ const HomePage = () => {
                         whileTap={{ scale: 0.95 }}
                     >
                         <h3>📅 Attendance & Leave Management</h3>
-                        <p>
-                            Track employee attendance and process leave requests with integrated tools.
+                        <hr></hr>
+                        <p className='front-color'>
+                        Track employee attendance and process leave requests with integrated tools.
                         </p>
                     </motion.div>
 
@@ -59,9 +61,10 @@ const HomePage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <h3>📈 Comprehensive Reports</h3>
-                        <p>
-                            Get detailed insights and compliance reports for better decision-making.
+                        <h3>📈 Comprehensive Reports</h3><br></br>
+                        <hr></hr>
+                        <p className='front-color'>
+                         Get detailed insights and compliance reports for better decision-making.
                         </p>
                     </motion.div>
                 </div>
@@ -70,4 +73,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default Home;

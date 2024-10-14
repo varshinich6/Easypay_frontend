@@ -49,6 +49,7 @@ const CodeCheck = () => {
           </button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* {error && <p className="text-danger mt-3">{error}</p>} */}
       </div>
     </div>
   );

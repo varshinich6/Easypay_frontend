@@ -1,15 +1,14 @@
-//src/axiosInstance.js
 import axios from 'axios';
 
-// Create an axios instance
+
 const axiosInstance = axios.create({
-  baseURL: 'https://localhost:7175/api', // Replace with your API base URL
+  baseURL: 'https://localhost:7175/api', 
 });
 
-// Add a request interceptor to include the Authorization token
+
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+    const token = localStorage.getItem('token'); 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

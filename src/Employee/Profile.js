@@ -54,7 +54,7 @@ const Profile = () => {
       });
       const response = await axiosInstance.get('/EmployeeDetails');
       setEmployeeDetails(response.data);
-      setIsEditing(false); // Exit editing mode after successful submission
+      setIsEditing(false); 
     } catch (error) {
       console.error('Error updating employee details:', error);
     }
@@ -66,6 +66,10 @@ const Profile = () => {
       {employeeDetails ? (
         <form onSubmit={handleSubmit} className="employee-form">
           <div className="profile-details">
+            <div className="detail">
+              <strong>Employee ID:</strong>
+              <span className="value-box">{employeeDetails.employeeId}</span>
+            </div>
             <div className="detail">
               <strong>Employee Name:</strong>
               <span className="value-box">{employeeDetails.employeeName}</span>

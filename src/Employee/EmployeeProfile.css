@@ -38,18 +38,18 @@
   margin-right: 20px;
 }
 
-.value-box,
-.input-box {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+
+.input-box, .value-box {
   padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
   text-align: left;
-  width: 100%; /* Ensure uniform width */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; /* Ensure full width for both input and value box */
+  box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
-.input-box {
-  padding: 10px;
+.input-box , .value-box {
+  min-width: 100%;
 }
 
 .button-group {

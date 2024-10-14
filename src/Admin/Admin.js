@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Admin.css"; // You can style the navbar here
+import "./Admin.css"; 
 import ViewPaystubs from "../Employee/ViewPaystubs";
 import Home from "../Employee/Home";
 import ComplianceReports from "./ComplianceReports";
@@ -10,10 +10,10 @@ import PayrollPolicies from "./PayrollPolicies";
 import Profile from "../Employee/Profile";
 import RequestLeave from "../Employee/RequestLeave";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserShield } from '@fortawesome/free-solid-svg-icons'; // Choose an appropriate icon
+import { faUserShield } from '@fortawesome/free-solid-svg-icons'; 
 
 function Admin() {
-  // State to track the active component
+  
   const [activeComponent, setActiveComponent] = useState("home");
   const navigate = useNavigate();
   

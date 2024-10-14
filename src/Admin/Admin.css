@@ -69,12 +69,6 @@
 }
 
 
-
-
-
-
-
-
 .app-admin {
   display: flex;
   height: 100%;
@@ -134,5 +128,5 @@
   flex-grow: 1;
   padding: 15vh 5% 70px 5%;
   flex-direction: column;
-  /* background-color: #f4f4f4; */
+  
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute/ProtectedRoute'; // Import your ProtectedRoute component
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Login from './Pages/Login';
 import LandingPage from './Pages/LandingPage';
 import Admin from './Admin/Admin';
@@ -28,8 +28,6 @@ import ChangePassword from './Pages/ChangePassword';
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<LandingPage />} />
@@ -249,8 +247,6 @@ function App() {
             {/* Redirect any unknown route to the landing page */}
             <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-        </header>
-      </div>
     </Router>
   );
 }

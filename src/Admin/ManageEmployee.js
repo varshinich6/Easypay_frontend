@@ -81,6 +81,7 @@ const ManageEmployee = () => {
                 accountNumber: '',
                 gradeId: ''
             });
+            alert("Employee Added Successfully");
             setEmployeeToEdit(null);
             fetchEmployees();
         } catch (error) {
@@ -155,7 +156,7 @@ const ManageEmployee = () => {
                         <div className="grid-header">Date of Joining</div>
                         <div className="grid-header">Basic Salary</div>
                         <div className="grid-header">Bank Name</div>
-                        <div className="grid-header">Account Number</div>
+                        {/* <div className="grid-header">Account Number</div> */}
                         <div className="grid-header">Grade ID</div>
                         <div className="grid-header">Actions</div> {/* Actions Header */}
 
@@ -168,7 +169,7 @@ const ManageEmployee = () => {
                                 <div className="grid-cell">{new Date(emp.dateOfJoining).toLocaleDateString()}</div>
                                 <div className="grid-cell">{emp.basicSalary}</div>
                                 <div className="grid-cell">{emp.bankName}</div>
-                                <div className="grid-cell">{emp.accountNumber}</div>
+                                {/* <div className="grid-cell">{emp.accountNumber}</div> */}
                                 <div className="grid-cell">{emp.gradeId}</div>
                                 <div className="grid-cell">
                                     {/* Edit and Delete buttons */}

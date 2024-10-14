@@ -8,22 +8,21 @@ import Profile from "../Employee/Profile"
 import ViewPaystubs from "../Employee/ViewPaystubs";
 import RequestLeave from "../Employee/RequestLeave";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserShield } from '@fortawesome/free-solid-svg-icons'; // Choose an appropriate icon
-
+import { faUserShield } from '@fortawesome/free-solid-svg-icons'; 
 
 function Processor() {
-  // State to track the active component
+  
   const [activeComponent, setActiveComponent] = useState("home");
   const navigate = useNavigate();
 
-  // Handle logout and redirect to login page
+  
   const handleLogout = () => {
     console.log("Logout");
     navigate("/");
     localStorage.clear();
   };
 
-  // Function to render the selected component
+  
   const renderComponent = () => {
     switch (activeComponent) {
       case "home":
@@ -78,9 +77,8 @@ function Processor() {
     </div>
    
     <div className="app-admin">
-      {/* Sidebar Navbar */}
       <div className="sidebar-admin">
-        <ul>            <li onClick={() => setActiveComponent("home")}>Home</li>
+        <ul><li onClick={() => setActiveComponent("home")}>Home</li>
             <li onClick={() => setActiveComponent("Profile")}>Profile</li>
             <li onClick={() => setActiveComponent("calculate")}>Manage Payroll</li>
             <li onClick={() => setActiveComponent("manage")}>Manage Benefits</li>
@@ -89,7 +87,7 @@ function Processor() {
           </ul>
         </div>
 
-        {/* Main Content Area */}
+       
         <div className="main-content">
           {renderComponent()}
         </div>

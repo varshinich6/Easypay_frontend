@@ -9,26 +9,27 @@
     display: flex;
     align-items: center;  /* Centers items vertically */
     justify-content: center; /* Centers items horizontally */
-    font-family: 'Arial, sans-serif';
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 /* Smooth Color Transition Background */
 .backgroundAnimation {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, rgba(0, 36, 79, 1), rgba(0, 54, 99, 1));
+    /* background: linear-gradient(120deg, rgba(0, 36, 79, 1), rgba(0, 54, 99, 1)); */
+    background: linear-gradient(120deg, rgb(243, 244, 245), rgb(39, 94, 143));
     z-index: -1;
     animation: colorTransition 10s ease infinite alternate; /* Changed animation */
 }
 
-@keyframes colorTransition {
-    0% { background: linear-gradient(120deg, rgba(0, 36, 79, 1), rgba(0, 54, 99, 1)); }
-    50% { background: linear-gradient(120deg, rgba(0, 54, 99, 1), rgba(0, 36, 79, 1)); }
-    100% { background: linear-gradient(120deg, rgba(0, 36, 79, 1), rgba(0, 54, 99, 1)); }
-}
+/* @keyframes colorTransition {
+    0% { background: linear-gradient(120deg, rgb(243, 244, 245), rgb(39, 94, 143)); }
+    50% { background: linear-gradient(120deg, rgb(241, 244, 247), rgba(0, 36, 79, 1)); }
+    100% { background: linear-gradient(120deg, rgb(246, 247, 248), rgba(0, 54, 99, 1)); }
+} */
 
 /* Centered Content Section */
 .contentSection {
@@ -92,4 +93,7 @@
 .infoCard p {
     font-size: 16px;
     line-height: 1.5;
+}
+.front-color{
+    color:white;
 }

@@ -29,7 +29,7 @@ const ChangePassword = () => {
             position: "top-center",
             autoClose: 3000, // The toast will close after 3 seconds
             onClose: () => {
-              navigate("/login");  // Navigate after the toast disappears
+              navigate('/');  // Navigate after the toast disappears
               localStorage.clear();
             }
           });

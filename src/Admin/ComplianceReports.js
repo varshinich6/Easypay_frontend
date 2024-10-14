@@ -8,7 +8,6 @@ const ComplianceReportForm = ({ reportToEdit, onSave }) => {
     const [report, setReport] = useState({
         reportName: '',
         description: '',
-        createdDate: '',
     });
 
     useEffect(() => {
@@ -26,23 +25,24 @@ const ComplianceReportForm = ({ reportToEdit, onSave }) => {
         e.preventDefault();
         try {
             if (report.crId) {
+                // Update existing report
                 await axiosInstance.put(`/ComplianceReports/${report.crId}`, report, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     }
                 });
             } else {
+                // Create new report
                 await axiosInstance.post('/ComplianceReports', report, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     }
                 });
             }
-            onSave();
+            onSave(); // Notify parent component to refresh data
             setReport({
                 reportName: '',
                 description: '',
-                createdDate: '',
             });
         } catch (error) {
             console.error('Error saving compliance report:', error);
@@ -67,41 +67,13 @@ const ComplianceReportForm = ({ reportToEdit, onSave }) => {
                 onChange={handleChange}
                 placeholder="Description"
             />
-            <input
-                type="date"
-                name="createdDate"
-                value={report.createdDate}
-                onChange={handleChange}
-                placeholder="Created Date"
-                required
-            />
             <button type="submit">{report.crId ? 'Update' : 'Add'}</button>
         </form>
     );
 };
 
 // Compliance Report List Component with Table and Icons
-const ComplianceReportList = ({ onEdit, onDelete }) => {
-    const [reports, setReports] = useState([]);
-    const [error, setError] = useState('');
-
-    useEffect(() => {
-        fetchReports();
-    }, []);
-
-    const fetchReports = async () => {
-        try {
-            const response = await axiosInstance.get('/ComplianceReports', {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                }
-            });
-            setReports(response.data);
-        } catch (error) {
-            setError('Failed to fetch compliance reports');
-        }
-    };
-
+const ComplianceReportList = ({ reports, onEdit, onDelete }) => {
     return (
         <div className="compliance-report-list">
             <h2>Compliance Reports List</h2>
@@ -138,7 +110,6 @@ const ComplianceReportList = ({ onEdit, onDelete }) => {
                     ))}
                 </tbody>
             </table>
-            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };
@@ -146,11 +117,30 @@ const ComplianceReportList = ({ onEdit, onDelete }) => {
 // Compliance Reports Component (Main Container)
 const ComplianceReports = () => {
     const [reportToEdit, setReportToEdit] = useState(null);
-    const [activeTab, setActiveTab] = useState('addReport'); // State for active tab
+    const [activeTab, setActiveTab] = useState('addReport');
+    const [reports, setReports] = useState([]);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        fetchReports(); // Fetch reports on load
+    }, []);
+
+    const fetchReports = async () => {
+        try {
+            const response = await axiosInstance.get('/ComplianceReports', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            });
+            setReports(response.data);
+        } catch (error) {
+            setError('Failed to fetch compliance reports');
+        }
+    };
 
     const handleEdit = (report) => {
         setReportToEdit(report);
-        setActiveTab('addReport'); // Switch to add report tab on edit
+        setActiveTab('addReport');
     };
 
     const handleDelete = async (id) => {
@@ -160,16 +150,16 @@ const ComplianceReports = () => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             });
-            window.location.reload();
+            fetchReports(); // Refresh reports after deletion
         } catch (error) {
             console.error('Error deleting compliance report:', error);
         }
     };
 
     const handleSave = () => {
-        setReportToEdit(null);
+        setReportToEdit(null); // Clear edit state
         setActiveTab('reportList'); // Switch to report list tab after saving
-        window.location.reload();
+        fetchReports(); // Refresh reports after saving
     };
 
     return (
@@ -194,8 +184,13 @@ const ComplianceReports = () => {
                 <ComplianceReportForm reportToEdit={reportToEdit} onSave={handleSave} />
             )}
             {activeTab === 'reportList' && (
-                <ComplianceReportList onEdit={handleEdit} onDelete={handleDelete} />
+                <ComplianceReportList
+                    reports={reports}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
             )}
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };

@@ -44,7 +44,7 @@ const PayrollPolicyForm = ({ policyToEdit, onSave }) => {
                     }
                 });
             }
-            onSave();
+            onSave();  // Save the updated policy list
             setPolicy({
                 policyName: '',
                 description: '',
@@ -148,27 +148,7 @@ const PayrollPolicyForm = ({ policyToEdit, onSave }) => {
 };
 
 // Payroll Policy List Component with Table and Icons
-const PayrollPolicyList = ({ onEdit, onDelete }) => {
-    const [policies, setPolicies] = useState([]);
-    const [error, setError] = useState('');
-
-    useEffect(() => {
-        fetchPolicies();
-    }, []);
-
-    const fetchPolicies = async () => {
-        try {
-            const response = await axiosInstance.get('/PayrollPolicies', {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                }
-            });
-            setPolicies(response.data);
-        } catch (error) {
-            setError('Failed to fetch payroll policies');
-        }
-    };
-
+const PayrollPolicyList = ({ policies, onEdit, onDelete }) => {
     return (
         <div className="payroll-policy-list">
             <h2>Payroll Policies List</h2>
@@ -177,7 +157,7 @@ const PayrollPolicyList = ({ onEdit, onDelete }) => {
                     <tr>
                         <th>Policy Name</th>
                         <th>Description</th>
-                        <th>Effective Date</th>
+                        {/* <th>Effective Date</th> */}
                         <th>EPF (%)</th>
                         <th>Professional Tax</th>
                         <th>Health Insurance</th>
@@ -192,7 +172,7 @@ const PayrollPolicyList = ({ onEdit, onDelete }) => {
                         <tr key={policy.payrollPolicyId}>
                             <td>{policy.policyName}</td>
                             <td>{policy.description}</td>
-                            <td>{new Date(policy.effectiveDate).toLocaleDateString()}</td>
+                            {/* <td>{new Date(policy.effectiveDate).toLocaleDateString()}</td> */}
                             <td>{policy.epfPercentage}</td>
                             <td>{policy.professionalTax}</td>
                             <td>{policy.healthInsurance}</td>
@@ -217,7 +197,6 @@ const PayrollPolicyList = ({ onEdit, onDelete }) => {
                     ))}
                 </tbody>
             </table>
-            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };
@@ -226,6 +205,24 @@ const PayrollPolicyList = ({ onEdit, onDelete }) => {
 const PayrollPolicies = () => {
     const [policyToEdit, setPolicyToEdit] = useState(null);
     const [activeTab, setActiveTab] = useState('addPolicy');
+    const [policies, setPolicies] = useState([]);
+
+    useEffect(() => {
+        fetchPolicies();
+    }, []);
+
+    const fetchPolicies = async () => {
+        try {
+            const response = await axiosInstance.get('/PayrollPolicies', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            });
+            setPolicies(response.data);
+        } catch (error) {
+            console.error('Failed to fetch payroll policies:', error);
+        }
+    };
 
     const handleEdit = (policy) => {
         setPolicyToEdit(policy);
@@ -239,7 +236,7 @@ const PayrollPolicies = () => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             });
-            window.location.reload();
+            setPolicies(policies.filter(policy => policy.payrollPolicyId !== id)); // Update the state to remove the deleted policy
         } catch (error) {
             console.error('Error deleting payroll policy:', error);
         }
@@ -248,7 +245,7 @@ const PayrollPolicies = () => {
     const handleSave = () => {
         setPolicyToEdit(null);
         setActiveTab('policyList');
-        window.location.reload();
+        fetchPolicies();  // Refresh the list of policies after saving
     };
 
     return (
@@ -273,7 +270,7 @@ const PayrollPolicies = () => {
                 <PayrollPolicyForm policyToEdit={policyToEdit} onSave={handleSave} />
             )}
             {activeTab === 'policyList' && (
-                <PayrollPolicyList onEdit={handleEdit} onDelete={handleDelete} />
+                <PayrollPolicyList policies={policies} onEdit={handleEdit} onDelete={handleDelete} />
             )}
         </div>
     );

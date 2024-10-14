@@ -62,12 +62,15 @@ const RequestLeave = () => {
         setLoading(true);
         setError('');
         try {
+            
             const response = await axiosInstance.get(`/LeaveRequest/Leave_Status${employeeId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             });
+            
             setLeaveStatus(response.data);
+            
         } catch (err) {
             setError('Unable to fetch leave status. Please try again later.');
         }
@@ -141,8 +144,9 @@ const RequestLeave = () => {
                     </div>
                     <button type="submit">Get Leave Status</button>
 
-                    {loading && <p className="status-message">Loading...</p>}
-                    {error && <p className="status-message" style={{ color: 'red' }}>{error}</p>}
+
+                    {loading && <p className="status-message">Loading...</p>} 
+                    {error && <p className="status-message" style={{ color: 'red' }}>{error}</p>} 
 
                     {/* Display Leave Status */}
                     {leaveStatus.length > 0 && (

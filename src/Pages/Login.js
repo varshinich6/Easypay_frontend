@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode'; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';  
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Login = () => {
@@ -115,10 +116,14 @@ const Login = () => {
           </button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* {error && <p className="text-danger mt-3">{error}</p>} */}
       </div>
     </div>
   );
 };
+
+
+
 
 const styles = {
   container: {

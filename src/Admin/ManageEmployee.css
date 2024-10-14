@@ -108,7 +108,7 @@ button[type="submit"]:hover {
 }
 .employee-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 columns: one for each employee detail and action buttons */
+    grid-template-columns: repeat(9, 1fr); /* 10 columns: one for each employee detail and action buttons */
     gap: 0px; /* No gap between grid cells */
     margin-top: 20px;
     align-items: center; /* Align items vertically in the center */

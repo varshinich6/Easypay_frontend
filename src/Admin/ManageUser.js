@@ -27,25 +27,28 @@ const UserForm = ({ userToEdit, onSave }) => {
         e.preventDefault();
         try {
             if (user.userId) {
+                // Update existing user
                 await axiosInstance.put(`/User/${user.userId}`, user, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
             } else {
+                // Create new user
                 await axiosInstance.post('/User', user, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
             }
-            onSave();
+            onSave(); // Notify parent component to refresh data and switch tab
             setUser({
                 userName: '',
                 email: '',
                 role: '',
                 employeeId: '',
             });
+            alert("User details added successfully!");
         } catch (error) {
             console.error('Error saving user:', error);
         }
@@ -63,7 +66,7 @@ const UserForm = ({ userToEdit, onSave }) => {
                 required
             />
             <input
-                type="text"
+                type="email"
                 name="email"
                 value={user.email}
                 onChange={handleChange}
@@ -160,6 +163,11 @@ const UserList = ({ onEdit, onDelete }) => {
 const ManageUser = () => {
     const [userToEdit, setUserToEdit] = useState(null);
     const [activeTab, setActiveTab] = useState('create'); // State for active tab
+    const [reloadUsers, setReloadUsers] = useState(false); // State to trigger data reload
+
+    useEffect(() => {
+        setReloadUsers(false); // Reset reloadUsers state after update
+    }, [reloadUsers]);
 
     const handleEdit = (user) => {
         setUserToEdit(user);
@@ -173,7 +181,7 @@ const ManageUser = () => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
             });
-            window.location.reload();
+            setReloadUsers(true); // Trigger reload after deletion
         } catch (error) {
             console.error('Error deleting user:', error);
         }
@@ -182,7 +190,7 @@ const ManageUser = () => {
     const handleSave = () => {
         setUserToEdit(null);
         setActiveTab('list'); // Switch to list tab after saving
-        window.location.reload();
+        setReloadUsers(true); // Trigger reload after saving
     };
 
     return (
@@ -207,7 +215,11 @@ const ManageUser = () => {
                 <UserForm userToEdit={userToEdit} onSave={handleSave} />
             )}
             {activeTab === 'list' && (
-                <UserList onEdit={handleEdit} onDelete={handleDelete} />
+                <UserList
+                    key={reloadUsers ? 'reload' : 'stable'} // Force re-render on reloadUsers state change
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
             )}
         </div>
     );

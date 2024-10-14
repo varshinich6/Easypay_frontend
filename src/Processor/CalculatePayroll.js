@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axiosInstance';
-import './CalculatePayroll.css'; // Import the updated CSS
+import './CalculatePayroll.css'; 
 
 const CalculatePayroll = () => {
   const [payrollData, setPayrollData] = useState({ employeeId: '', payDate: '' });
@@ -67,7 +67,6 @@ const CalculatePayroll = () => {
 
   return (
     <div className="container">
-      {/* Payroll Submission Form */}
       <div className="grid-item form-section">
         <form onSubmit={handleSubmit}>
           <h2>Submit Payroll</h2>
@@ -102,7 +101,7 @@ const CalculatePayroll = () => {
         <button onClick={fetchNetPay} disabled={!payrollId} className={payrollId ? 'btn-primary' : 'btn-disabled'}>
           Get Net Pay
         </button>
-        {netPay !== null && <p>Net Pay: ${netPay}</p>}
+        {netPay !== null && <p>Net Pay: ₹{netPay}</p>}
       </div>
 
       {/* Verify Payroll */}

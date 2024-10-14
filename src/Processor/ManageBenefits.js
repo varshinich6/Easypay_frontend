@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosInstance';
-import './ManageBenifits.css'; // Import your CSS file
+import './ManageBenifits.css'; 
 
 const ManageBenefits = () => {
     const [benefits, setBenefits] = useState([]);
@@ -67,6 +67,7 @@ const ManageBenefits = () => {
                         },
                     }
                 );
+                alert("Benefits added successfully!");
             }
             handleSave();
         } catch (error) {
@@ -74,10 +75,10 @@ const ManageBenefits = () => {
         }
     };
 
-    const handleEdit = (benefit) => {
-        setBenefitToEdit(benefit);
-        setActiveTab('add');
-    };
+    // const handleEdit = (benefit) => {
+    //     setBenefitToEdit(benefit);
+    //     setActiveTab('add');
+    // };
 
     const handleDelete = async (id) => {
         try {
@@ -86,6 +87,7 @@ const ManageBenefits = () => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             });
+            alert("Benefits deleted successfully!");
             fetchBenefits();
         } catch (error) {
             console.error('Error deleting benefits data:', error);
@@ -162,7 +164,7 @@ const ManageBenefits = () => {
     );
 
     return (
-        <div className="manage-benefits-container"> {/* Centered container */}
+        <div className="manage-benefits-container"> 
             <h1>Manage Benefits</h1>
             <div className="tabs">
                 <button
